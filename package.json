@@ -4,5 +4,8 @@
   "main": "bot.js",
   "author": "Lukas Neubert <serkonda@protonmail.com>",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "@octokit/core": "^3.2.4",
+    "discord.js": "^12.5.1"
+  }
 }
