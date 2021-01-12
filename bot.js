@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { graphql } = require("@octokit/graphql");
-const { prefix, botToken, ghToken } = require('./config.json');
+const { prefix, botToken, ghToken, org, repo } = require('./config.json');
 
 const client = new Discord.Client();
 
@@ -9,14 +9,9 @@ client.once('ready', () => {
 });
 client.on('message', async (message) => {
 	if (message.content.startsWith(`${prefix}prs`)) {
-		const graphqlWithAuth = graphql.defaults({
-			headers: {
-				authorization: `token ${ghToken}`,
-			},
-		});
-		const { repository } = await graphqlWithAuth(
-			`query{
-				repository(owner: "serkonda7", name: "pr-count-poke-bot") {
+		const { repository } = await graphql(
+			`query openPrCount($owner: String!, $name: String!){
+				repository(owner: $owner, name: $name) {
 					pullRequests(first: 100, states: OPEN) {
 						nodes {
 							title
@@ -24,10 +19,16 @@ client.on('message', async (message) => {
 						}
 					}
 				}
-			}`
+			}`, {
+				owner: org,
+				name: repo,
+				headers: {
+					authorization: `token ${ghToken}`,
+				}
+			}
 		);
 		repos = repository.pullRequests.nodes;
-		console.log(repos)
+		message.channel.send(`Open PRs: ${repos.length}`)
 	}
 });
 
