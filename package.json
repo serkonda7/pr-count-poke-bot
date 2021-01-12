@@ -1,0 +1,8 @@
+{
+  "name": "pr-count-poke-bot",
+  "version": "0.0.0",
+  "main": "bot.js",
+  "author": "Lukas Neubert <serkonda@protonmail.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
