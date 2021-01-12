@@ -1,0 +1,7 @@
+{
+	"prefix": "the prefix of commands (e.g. !)",
+	"botToken": "token for the Discord bot",
+	"ghToken": "a GitHub personal access token",
+	"owner": "user or organization the repo belongs to",
+	"repo": "the repository name"
+}

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { graphql } = require("@octokit/graphql");
-const { prefix, botToken, ghToken, org, repo } = require('./config.json');
+const { prefix, botToken, ghToken, owner, repo } = require('./config.json');
 
 const client = new Discord.Client();
 
@@ -20,7 +20,7 @@ client.on('message', async (message) => {
 					}
 				}
 			}`, {
-				owner: org,
+				owner: owner,
 				name: repo,
 				headers: {
 					authorization: `token ${ghToken}`,
