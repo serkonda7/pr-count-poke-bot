@@ -5,7 +5,7 @@
   "author": "Lukas Neubert <serkonda@protonmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@octokit/core": "^3.2.4",
+    "@octokit/graphql": "^4.5.8",
     "discord.js": "^12.5.1"
   }
 }
